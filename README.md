@@ -2,6 +2,11 @@
 
 Aplikasi ini merupakan project sederhana untuk pembelajaran implementasi operasi CRUD (Create, Read, Update, Delete) menggunakan bahasa pemrograman Go (Golang) **tanpa menggunakan framework**.
 
+### Teknologi
+- Golang v.1.24.3
+- MySQL 8
+- Bootstrap 5
+
 ### Fitur Utama
 - Implementasi CRUD dasar pada dua tabel yang saling berelasi: **Post** dan **Category**.
 - Setiap Post memiliki relasi ke satu Category.
