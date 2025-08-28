@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg border border-b">
+        <div class="container">
+            <a class="navbar-brand" href="/">GoStrap</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-auto" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link " href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/posts">Posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/categories">Categories</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+
+
+    <div class="container py-3">
+
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <form action="/posts/update" method="POST" class="card">
+                    <div class="card-header">
+                        <h1>Edit Category</h1>
+                    </div>
+                    <div class="card-body">
+                        <input type="hidden" id="id" name="id" value="{{ .post.Id }}">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Title</label>
+                            <input type="text" value="{{ .post.Title }}" class="form-control" id="title" name="title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Category</label>
+                            <select class="form-select" name="category_id">
+                                <option disabled>-- Select Category --</option>
+                                {{ range .categories }}
+                                    <option value="{{ .Id }}" {{ if eq .Id $.post.Category.Id }}selected{{ end }}>
+                                        {{ .Name }}
+                                    </option>
+                                {{ end }}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="conent" class="form-label">Content</label>
+                            <textarea class="form-control" name="content" id="conent" rows="10">
+                                {{ .post.Content }}
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script> -->
+</body>
+
+</html>
